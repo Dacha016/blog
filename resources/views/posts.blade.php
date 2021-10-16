@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <title>Blog</title>
-        <link rel="stylesheet" href="/app.css">
+@extends("layout")
+@section("content")
+{{--  <?php foreach($posts as $post): ?> --}}
+@foreach ($posts as $post)
 
-    </head>
-    <body>
-        <?php foreach($posts as $post): ?>
-       <article>
-          <h1>
-            <a href="/posts/<?= $post->slug; ?> ">{{$post->title}}</a>
-              </h1>
-          <div>
-              {{$post->excerpt}}
-          </div>
-       </article>
-      <?php endforeach; ?>
-    </body>
-</html>
+<article>
+   <h1>
+     <a href="/posts/{{$post->slug; }} ">{{$post->title}}</a>
+       </h1>
+   <div>
+       {{$post->excerpt}}
+   </div>
+</article>
+@endforeach
+{{-- <?php endforeach; ?> --}}
+</body>
+@endsection

@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
-// use  Illuminate\Database\Eloquent\ModelNotFoundException;
+
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 class Post{
@@ -58,7 +59,12 @@ class Post{
     }
     public static function find($slug){
         //bolji nacin. koristimo vec primenjenu logiku sa all()
-        return static::all()->firstWhere("slug",$slug);
+
+        $post = static::all()->firstWhere("slug",$slug);
+        if(! $post){
+            throw new ModelNotFoundException();
+        }
+        return $post;
     //       if(! file_exists( $path=resource_path( "posts/{$slug}.html"))){
     //         throw new ModelNotFoundException();
     // }
