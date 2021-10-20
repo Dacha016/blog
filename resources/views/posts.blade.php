@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 {{--  <?php foreach($posts as $post): ?> --}}
-@foreach ($posts as $post)
+ @foreach ($posts as $post)
 
 <article>
    <h1>

@@ -6,6 +6,11 @@
 
     </head>
     <body>
+       <div>
+        <form action="#" method="GET">
+            <input type="text" name="search" placeholder="find" value="{{request('search')}}">
+        </form>
+       </div>
         @yield("content")
     </body>
 </html>

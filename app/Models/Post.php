@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $guarded=[];
-    // protected $fillable=["title"];
+    protected $guarded=[];  // koristimo pri skladistenju vise unosa odjednom. Ako je prazan niz dozvoljen je unos svih polja
+    protected $with = ["category","author"];//  koristimo da bi izbegli ponavljanje query-ja
+    // protected $fillable=["title"];    //  odredjujemo joja polja mogu da se popune prilikom skladisenja vise unosa
     public function category(){
         return $this->belongsTo(Category::class);
     }
